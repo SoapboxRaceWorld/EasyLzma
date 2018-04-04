@@ -92,7 +92,11 @@ typedef int Bool;
 #endif
 
 #define MY_CDECL __cdecl
-#define MY_STD_CALL __declspec(dllexport)
+#ifdef WIN32
+    #define MY_STD_CALL __declspec(dllexport)
+#else
+    #define MY_STD_CALL __stdcall
+#endif
 #define MY_FAST_CALL MY_NO_INLINE __fastcall
 
 #else
